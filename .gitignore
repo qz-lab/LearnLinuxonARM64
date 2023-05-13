@@ -1,0 +1,6 @@
+.*.cmd
+*.o
+*.order
+
+# bare-metal
+bare-metal*
