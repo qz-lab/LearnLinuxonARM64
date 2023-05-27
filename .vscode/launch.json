@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "by-gdb",
+            "request": "launch",
+            "name": "bare-metal",
+            "debuggerPath": "aarch64-unknown-linux-gnu-gdb",
+            //"stopAtEntry": true,
+            "program": "${workspaceRoot}/output/bare-metal",
+            "cwd": "${workspaceRoot}",
+            "remote": {
+                "enabled": true,
+                "address": ":1234",
+                "mode": "remote"
+            },
+        }
+    ]
+}

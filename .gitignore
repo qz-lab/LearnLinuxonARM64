@@ -1,0 +1,5 @@
+.*.cmd
+*.o
+*.order
+
+output/
