@@ -5,7 +5,16 @@
 // would require setting up stacks space for each CPU.
 
 // Stack locations
-.equ stack_top, 0x20000000 // Raspberry Pi 2
+/*
+ * QEMU Memory starts from 0x4000_0000, and the DTB locates there.
+ * 
+ * We arrange the memory during boot time as follows:
+ *
+ * * 0x4000_0000 ~ +1MB         : for DTB reservation
+ * * 0x4010_0000 ~ __bss_end__  : for static data
+ * * __bss_end__ ~ +32KB        : split into 4 stacks for EL3~EL0
+ */
+.equ stack_top, __bss_end__ + 0x8000
 .equ EL3_stack_top, stack_top
 .equ EL2_stack_top, stack_top - 0x2000
 .equ EL1_stack_top, stack_top - 0x4000
@@ -117,6 +126,9 @@ mov x0, #0b00000 // DAIF=0000 M[4:0]=00000 EL0t.
 msr SPSR_EL1, x0
 adr x0, el0_entry // el0_entry points to the first
 msr ELR_EL1, x0 // instruction of EL0 code.
+
+/* We do some OS-level initializations before back to user-mode */
+bl os_entry
 eret
 
 el0_entry:

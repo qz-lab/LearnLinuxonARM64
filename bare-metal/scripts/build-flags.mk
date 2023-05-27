@@ -1,3 +1,21 @@
+################################################################################
+# file: build-flags.mk
+#
+# Initial Global Building Options are prepared in this file, such as various
+# tools and :
+#
+# * KBUILD_CPPFLAGS, KBUILD_CFLAGS, KBUILD_AFLAGS, KBUILD_LDFLAGS
+# * KBUILD_CFLAGS_KERNEL, KBUILD_AFLAGS_KERNEL, LDFLAGS_vmlinux
+# * KBUILD_CFLAGS_MODULE, KBUILD_AFLAGS_MODULE, KBUILD_LDFLAGS_MODULE
+#
+# On the other hand, the following Global Building Options are not assigned in
+# Linux. Except that 'LDFLAGS_MODULE' is used as an candidate as 
+# 'KBUILD_LDFLAGS_MODULE'.
+#
+# * CFLAGS_KERNEL, AFLAGS_KERNEL, LDFLAGS_vmlinux
+# * CFLAGS_MODULE, AFLAGS_MODULE, LDFLAGS_MODULE
+#
+#
 # Make variables (CC, etc...)
 AS		= $(CROSS_COMPILE)as
 LD		= $(CROSS_COMPILE)ld

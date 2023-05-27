@@ -1,5 +1,5 @@
 #
-OUTPUT=../output/bare-metal
+OUTPUT=../output
 
 HW_OPT="-machine virt -cpu cortex-a53 -smp 2 -m 1024"
 
@@ -23,7 +23,7 @@ echo $DEBUG_OPT
 set -e
 #
 # build the tareget first
-make O=${OUTPUT} KBUILD_AFLAGS="-g" KBUILD_CFLAGS="-g"
+make O=${OUTPUT} KBUILD_AFLAGS="-g" KBUILD_CFLAGS="-g -fno-stack-protector"
 
 # start QEMU in subshell
 $(qemu-system-aarch64 ${HW_OPT} ${BOOT_OPT} ${DEBUG_OPT})

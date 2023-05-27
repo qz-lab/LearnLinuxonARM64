@@ -315,6 +315,7 @@ scripts/basic/%: scripts_basic ;
 
 
 init-y	:= vector/
+core-y  := kernel/ library/
 
 bare-metal-dirs := $(patsubst %/,%,$(filter %/,$(init-y) $(init-m) \
     $(core-y) $(core-m)))

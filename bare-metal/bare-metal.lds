@@ -22,7 +22,9 @@ SECTIONS
 	. = ALIGN(4096); /* align to page size */
 	__rodata_end__ = .;
 
+	. = 0x40000000 + 0x100000;	/* 1MB for FDT */
 	__data_start__ = .;
+
 	.data :
 	{
 		*(.data)
